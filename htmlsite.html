@@ -52,20 +52,31 @@
       background-color: #45a049;
     }
 
-    .meio_center{
-        text-align: center;
-    }
-    .imagens{
-        background-color: #dfe2df;
-        height: 150px;
-        width: 150px;
-        margin: 100px;
-        text-align: center;
-        justify-content: center;
+    .meio_center {
+      text-align: center;
     }
 
-    .nome{
+    .imagens {
+      background-color: #dfe2df;
+      height: 150px;
+      width: 150px;
+      margin: 150px; /* Aumente o valor para criar um espaçamento maior */
+      text-align: center;
+      justify-content: center;
+      margin-top: 50px;
+    }
 
+    .nome {
+      margin-top: 30px; /* Adicione uma margem superior para separar os nomes das imagens */
+      text-align: center;
+      justify-content: center;
+    }
+
+    .preco {
+      color: #666;
+      font-size: 16px;
+      text-align: center;
+      justify-content: center;
     }
 
   </style>
@@ -74,25 +85,51 @@
   <h1 class="meio_center">Bem-vindo ao Site</h1>
   <p>Preencha as informações abaixo:</p>
 
-
   <form>
     <label for="nome">Nome:</label>
     <input type="text" id="nome" name="nome" required>
-
 
     <label for="email">E-mail:</label>
     <input type="email" id="email" name="email" required>
 
     <input type="submit" value="Enviar">
   </form>
-   
-  <label class="nome">PS5</label>
-  <div>
-  <img class="imagens" src="imagens/ps5.png" alt="foto do ps5">
-  <img class="imagens" src="imagens/chuteira.png" alt="foto da chuteira">
-  <img class="imagens" src="imagens/bolafutvolei.png" alt="foto da bola">
-  <img class="imagens" src="imagens/computador.png" alt="pc gamer">
-  <img class="imagens" src="imagens/skate.png.webp" alt="skate">
-  </div>
+
+  <table>
+    <tr>
+      <td>
+        <label class="nome">PS5</label>
+        <img class="imagens" src="imagens/ps5.png" alt="foto do ps5">
+        <div class="preco">R$ 2.999,00</div>
+      </td>
+      <td>
+        <label class="nome">Chuteira</label>
+        <img class="imagens" src="imagens/chuteira.png" alt="foto da chuteira">
+        <div class="preco">R$ 300,00</div>
+      </td>
+      <td>
+        <label class="nome">Bola</label>
+        <img class="imagens" src="imagens/bolafutvolei.png" alt="foto da bola">
+        <div class="preco">R$ 200,00</div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label class="nome">PC</label>
+        <img class="imagens" src="imagens/computador.png" alt="pc gamer">
+        <div class="preco">R$ 3.999,00</div>
+      </td>
+      <td>
+        <label class="nome">SKATE</label>
+        <img class="imagens" src="imagens/skate.png.webp" alt="skate">
+        <div class="preco">R$ 400,00</div>
+      </td>
+      <td>
+        <label class="nome">SKATE</label>
+        <img class="imagens" src="imagens/skate.png.webp" alt="skate">
+        <div class="preco">R$ 500,00</div>
+      </td>
+    </tr>
+  </table>
 </body>
 </html>
