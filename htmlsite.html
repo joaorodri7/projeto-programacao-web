@@ -60,7 +60,6 @@
       background-color: #dfe2df;
       height: 150px;
       width: 150px;
-      margin: 150px; /* Aumente o valor para criar um espaçamento maior */
       text-align: center;
       justify-content: center;
       margin-top: 50px;
@@ -79,7 +78,7 @@
       justify-content: center;
     }
 
-    input[type="calcular"] {
+    .calcular {
       background-color: #4CAF50;
       color: white;
       border: none;
@@ -87,13 +86,36 @@
       cursor: pointer;
       border-radius: 3px;
       text-align: center;
-      display:flex;
+      display: flex;
       position: fixed;
       bottom: 20px;
       right: 20px;
     }
 
+    #resultado {
+      margin-top: 20px;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
   </style>
+  <script>
+    function calcular() {
+      var checkboxes = document.getElementsByName('item[]');
+      var quantidades = document.getElementsByName('quantidade[]');
+      var resultado = 0;
+
+      for (var i = 0; i < checkboxes.length; i++) {
+        if (checkboxes[i].checked) {
+          var quantidade = parseInt(quantidades[i].value);
+          var preco = parseFloat(checkboxes[i].parentNode.querySelector('.preco').textContent.replace('R$ ', ''));
+          resultado += quantidade * preco;
+        }
+      }
+
+      document.getElementById('resultado').textContent = 'Total: R$ ' + resultado.toFixed(2);
+    }
+  </script>
 </head>
 <body>
   <h1 class="meio_center">Bem-vindo ao Site</h1>
@@ -115,16 +137,22 @@
         <label class="nome">PS5</label>
         <img class="imagens" src="imagens/ps5.png" alt="foto do ps5">
         <div class="preco">R$ 2.999,00</div>
+        <input type="checkbox" name="item[]" value="ps5"> Quantidade:
+        <input type="number" name="quantidade[]" min="1">
       </td>
       <td>
         <label class="nome">Chuteira</label>
         <img class="imagens" src="imagens/chuteira.png" alt="foto da chuteira">
         <div class="preco">R$ 300,00</div>
+        <input type="checkbox" name="item[]" value="chuteira"> Quantidade:
+        <input type="number" name="quantidade[]" min="1">
       </td>
       <td>
         <label class="nome">Bola</label>
         <img class="imagens" src="imagens/bolafutvolei.png" alt="foto da bola">
         <div class="preco">R$ 200,00</div>
+        <input type="checkbox" name="item[]" value="bola"> Quantidade:
+        <input type="number" name="quantidade[]" min="1">
       </td>
     </tr>
     <tr>
@@ -132,25 +160,31 @@
         <label class="nome">PC</label>
         <img class="imagens" src="imagens/computador.png" alt="pc gamer">
         <div class="preco">R$ 3.999,00</div>
+        <input type="checkbox" name="item[]" value="pc"> Quantidade:
+        <input type="number" name="quantidade[]" min="1">
       </td>
       <td>
         <label class="nome">SKATE</label>
         <img class="imagens" src="imagens/skate.png.webp" alt="skate">
         <div class="preco">R$ 400,00</div>
+        <input type="checkbox" name="item[]" value="skate1"> Quantidade:
+        <input type="number" name="quantidade[]" min="1">
       </td>
       <td>
         <label class="nome">SKATE</label>
         <img class="imagens" src="imagens/skate.png.webp" alt="skate">
         <div class="preco">R$ 500,00</div>
+        <input type="checkbox" name="item[]" value="skate2"> Quantidade:
+        <input type="number" name="quantidade[]" min="1">
       </td>
     </tr>
   </table>
 
-  <div>
-  <div class = "calcular">
-  <input type="calcular" value="Calcular">
+  <div class="calcular">
+    <input type="button" value="Calcular" onclick="calcular()">
   </div>
-  </div>
+
+  <div id="resultado"></div>
 
 </body>
 </html>
