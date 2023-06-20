@@ -79,18 +79,14 @@
       justify-content: center;
     }
 
-    input[type="calcular"] {
+    .meio_center input[type="button"] {
       background-color: #4CAF50;
       color: white;
       border: none;
-      padding: 5px;
+      padding: 10px;
       cursor: pointer;
-      border-radius: 3px;
+      border-radius: 5px;
       text-align: center;
-      display:flex;
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
     }
 
   </style>
@@ -172,10 +168,8 @@
     </tr>
   </table>
 
-  <div>
-  <div class = "calcular">
-  <input type="calcular" value="Calcular">
-  </div>
+  <div class="meio_center">
+    <input type="button" value="Calcular" onclick="calcular()">
   </div>
 
   <script>
@@ -212,6 +206,24 @@
       var valorTotal = quantidade * valorUnitario;
       valorSpan.textContent = valorTotal;
     }
+
+    function calcular() {
+    var itens = ['ps5', 'chuteira', 'bola', 'computador', 'skate'];
+    var total = 0;
+
+    for (var i = 0; i < itens.length; i++) {
+      var quantidadeSpan = document.getElementById('quantidade-' + itens[i]);
+      var valorSpan = document.getElementById('valor-' + itens[i]);
+      var quantidade = parseInt(quantidadeSpan.textContent);
+      var valorUnitario = valoresUnitarios[itens[i]];
+      var valorTotal = quantidade * valorUnitario;
+      valorSpan.textContent = valorTotal;
+      total += valorTotal;
+    }
+
+    alert('O valor total dos itens é: R$' + total);
+  }
+
   </script>
 
 </body>
