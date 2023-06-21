@@ -162,6 +162,11 @@
     <input type="button" value="Calcular" onclick="calcular()">
   </div>
 
+  <div>
+  <label for="orcamento">Orçamento:</label>
+  <input type="text" id="orcamento" name="orcamento" required>
+  </div>
+
   <script>
     var valoresUnitarios = {
       'ps5': 2999,
@@ -212,6 +217,39 @@
     }
 
     alert('O valor total dos itens é: R$' + total);
+
+  var nome = document.getElementById('nome').value;
+  var email = document.getElementById('email').value;
+  var orcamento = document.getElementById('orcamento').value;
+
+  var dados = {
+    nome: nome,
+    email: email,
+    orcamento: parseFloat(total),
+  };
+  
+
+  // Fazer uma requisição POST para o servidor
+  fetch('/enviar-formulario', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(dados),
+  })
+  .then(function(response) {
+    if (response.ok) {
+      // Requisição bem-sucedida, exibir mensagem de sucesso
+      alert("Dados salvos com sucesso!");
+    } else {
+      // Ocorreu um erro, exibir mensagem de erro
+      alert("Erro ao salvar os dados no servidor.");
+    }
+  })
+  .catch(function(error) {
+    console.error("Erro ao enviar a requisição:", error);
+  });
+
   }
 
   </script>
